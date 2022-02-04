@@ -10,14 +10,36 @@ class UsersRepository implements IUsersRepository {
     constructor() {
         this.repository = getRepository(User);
     }
-    async create(data: ICreateUserDTO): Promise<void> {
-        throw new Error("Method not implemented.");
+
+    async create({
+        name,
+        password,
+        email,
+        cpf,
+        id,
+    }: ICreateUserDTO): Promise<void> {
+        const user = this.repository.create({
+            name,
+            email,
+            password,
+            cpf,
+            id,
+        });
+
+        await this.repository.save(user);
     }
     async findByEmail(email: string): Promise<User> {
-        throw new Error("Method not implemented.");
+        const user = await this.repository.findOne({ email });
+        return user;
     }
     async findById(id: string): Promise<User> {
-        throw new Error("Method not implemented.");
+        const user = await this.repository.findOne({ id });
+        return user;
+    }
+
+    async findByCpf(cpf: string): Promise<User> {
+        const user = await this.repository.findOne({ cpf });
+        return user;
     }
 }
 
