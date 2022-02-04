@@ -20,3 +20,5 @@ class UsersRepository implements IUsersRepository {
         throw new Error("Method not implemented.");
     }
 }
+
+export { UsersRepository };
