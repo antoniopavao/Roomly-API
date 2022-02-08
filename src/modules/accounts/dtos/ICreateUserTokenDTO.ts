@@ -3,3 +3,4 @@ interface ICreateUserTokenDTO {
     expires_date: string;
     refresh_token: string;
 }
+export { ICreateUserTokenDTO };
