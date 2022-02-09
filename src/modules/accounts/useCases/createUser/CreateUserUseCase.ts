@@ -22,9 +22,9 @@ class CreateUserUseCase {
         const userCpfExists = await this.usersRepository.findByCpf(cpf);
 
         if (userEmailExists) {
-            throw new AppError(`User with  ${email} already exists`, 401);
+            throw new AppError(`User with ${email} already exists`, 401);
         } else if (userCpfExists) {
-            throw new AppError(`User with ${cpf} already exists`, 401);
+            throw new AppError(`User with this cpf already exists`, 401);
         }
 
         const passwordHash = await hash(password, 8);
